@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+<!--list of stuff in nav bar-->
+    <item
+        android:id="@+id/near"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:icon="@drawable/nearby"
+        android:title="Near Me" />
+    <item
+        android:id="@+id/map"
+        android:icon="@drawable/map"
+        android:title="Map" />
+    <item
+        android:id="@+id/admin"
+        android:icon="@drawable/admin"
+        android:title="Admin Tab" />
+    <item
+        android:id="@+id/settings"
+        android:icon="@drawable/settings"
+        android:title="Settings" />
+
+</menu>
