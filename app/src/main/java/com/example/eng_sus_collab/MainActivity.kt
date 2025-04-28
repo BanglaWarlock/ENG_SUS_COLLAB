@@ -20,5 +20,5 @@ class MainActivity : AppCompatActivity()
 
             // i do something
         }
-    }
+        }
 }
