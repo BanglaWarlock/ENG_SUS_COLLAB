@@ -3,12 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".UserStationView">
+    tools:context=".NearMe">
 
     <!-- TODO: Update blank fragment layout -->
-
-<!--   Possibly needed to make list of stations for user to view in Near Me-->
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerCompleted"
         android:layout_width="match_parent"
