@@ -23,5 +23,66 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+<!--    Frame layout becomes the button-->
+    <FrameLayout
+        android:id="@+id/rowAdmin"
+        android:layout_width="414dp"
+        android:layout_height="80dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textSettings">
+
+        <!-- Icon -->
+        <ImageView
+            android:layout_width="57dp"
+            android:layout_height="48dp"
+            android:layout_gravity="start|center_vertical"
+            android:layout_marginStart="16dp"
+            android:src="@drawable/admin" />
+        <!-- Text -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_gravity="start|center_vertical"
+            android:layout_marginStart="150dp"
+            android:text="Admin Login"
+            android:textColor="@color/black"
+            android:textSize="22sp" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/rowSupport"
+        android:layout_width="0dp"
+        android:layout_height="80dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/rowAdmin">
+
+        <!-- Icon -->
+        <ImageView
+            android:layout_width="57dp"
+            android:layout_height="48dp"
+            android:layout_gravity="start|center_vertical"
+            android:layout_marginStart="16dp"
+            android:src="@drawable/admin" />
+        <!-- Text -->
+        <TextView
+            android:id="@+id/row_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_gravity="start|center_vertical"
+            android:layout_marginStart="150dp"
+            android:text="Support"
+            android:textColor="@color/black"
+            android:textSize="22sp" />
+
+    </FrameLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
