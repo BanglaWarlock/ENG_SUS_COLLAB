@@ -7,21 +7,23 @@
     android:foregroundTint="#E8CCE8"
     tools:context=".MainActivity">
 <!--        Main App view-->
-        <TextView
-            android:id="@+id/textNear"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#E8CCE8"
-            android:paddingLeft="10dp"
-            android:paddingTop="10dp"
-            android:paddingBottom="5dp"
-            android:text="Near Me"
-            android:textColor="@color/black"
-            android:textSize="22sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+<!--        removed cause header would change in fragment (?)-->
+<!--        <TextView-->
+<!--            android:id="@+id/textNear"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:background="#E8CCE8"-->
+<!--            android:paddingLeft="10dp"-->
+<!--            android:paddingTop="10dp"-->
+<!--            android:paddingBottom="5dp"-->
+<!--            android:text="Near Me"-->
+<!--            android:textColor="@color/black"-->
+<!--            android:textSize="22sp"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintHorizontal_bias="1.0"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent" />-->
+
 
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/fragment_container"
@@ -29,9 +31,9 @@
             android:layout_height="0dp"
             app:layout_constraintBottom_toTopOf="@+id/bottomNav"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.826"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textNear" />
-
+            app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bottomNav"
