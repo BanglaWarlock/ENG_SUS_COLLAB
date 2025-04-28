@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:foregroundTint="#E8CCE8"
+    android:background="#C4D9F2"
     tools:context=".MainActivity">
 <!--        Main App view-->
 <!--        removed cause header would change in fragment (?)-->
@@ -25,16 +25,6 @@
 <!--            app:layout_constraintTop_toTopOf="parent" />-->
 
 
-        <androidx.fragment.app.FragmentContainerView
-            android:id="@+id/fragment_container"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:layout_constraintBottom_toTopOf="@+id/bottomNav"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.826"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bottomNav"
             android:layout_width="match_parent"
@@ -48,5 +38,16 @@
             app:layout_constraintStart_toStartOf="parent"
             app:menu="@menu/nav_menu" />
 
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/fragment_container"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/bottomNav"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.826"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:name="com.example.eng_sus_collab.NearMe"
+            tools:layout="@layout/fragment_near_me" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
