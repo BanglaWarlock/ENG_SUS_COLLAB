@@ -75,9 +75,11 @@ class MainActivity : AppCompatActivity()
         val transaction = supportFragmentManager.beginTransaction()
 
         transaction.add(R.id.fragmentContainerView2, nearMeFragment)
+/*
         transaction.add(R.id.fragmentContainerView2, mapFragment).hide(mapFragment)
         transaction.add(R.id.fragmentContainerView2, adminFragment).hide(adminFragment)
         transaction.add(R.id.fragmentContainerView2, settingsFragment).hide(settingsFragment)
+*/
 
         transaction.commit()
 
@@ -92,8 +94,7 @@ class MainActivity : AppCompatActivity()
         // Hide the current fragment and show the new one
         activeFragment?.let {
             supportFragmentManager.beginTransaction()
-                .hide(it)
-                .show(fragment)
+                .replace(R.id.fragmentContainerView2, fragment)
                 .commit()
         }
 
