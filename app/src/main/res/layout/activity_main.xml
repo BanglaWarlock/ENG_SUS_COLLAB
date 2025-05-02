@@ -4,10 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
+    android:background="@color/white"
     android:layout_height="match_parent"
-    android:background="#C4D9F2"
+
     tools:context=".MainActivity">
-<!--        Main App view-->
+<!--      android:background="#C4D9F2"  Main App view-->
 <!--        removed cause header would change in fragment (?)-->
 <!--        <TextView-->
 <!--            android:id="@+id/textNear"-->
