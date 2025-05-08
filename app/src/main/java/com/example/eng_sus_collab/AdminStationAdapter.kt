@@ -4,22 +4,14 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.Switch
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
-import java.util.Calendar
+import com.example.eng_sus_collab.NearbyStationAdapter.ViewHolder
 
-/*interface  NearbyStationEvents{
-    fun  onStationClick(stationItem: NearbyStationItem)
- *//*    fun onTaskLongClick(taskItem: TaskItem)
-    fun onTaskSwitchClick(taskItem: TaskItem)*//*
-}*/
-
-class NearbyStationAdapter(private var stationList : ArrayList<NearbyStationItem>, private var clickListener: NearMe) :
-    RecyclerView.Adapter<NearbyStationAdapter.ViewHolder>() {
-
+class AdminStationAdapter(private var stationList : ArrayList<NearbyStationItem>, private var clickListener: AdminView) :
+    RecyclerView.Adapter<AdminStationAdapter.ViewHolder>()
+{
     private lateinit var context: Context
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
@@ -29,14 +21,17 @@ class NearbyStationAdapter(private var stationList : ArrayList<NearbyStationItem
         val stationContainer = itemView.findViewById<CardView>(R.id.stationContainer)
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NearbyStationAdapter.ViewHolder
+    override fun onCreateViewHolder(
+        parent: ViewGroup,
+        viewType: Int
+    ): AdminStationAdapter.ViewHolder
     {
         context = parent.context
         val view = LayoutInflater.from(parent.context).inflate(R.layout.station_user, parent, false)
         return ViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: NearbyStationAdapter.ViewHolder, position: Int)
+    override fun onBindViewHolder(holder: AdminStationAdapter.ViewHolder, position: Int)
     {
         val stationItem = stationList[position]
 
@@ -50,11 +45,6 @@ class NearbyStationAdapter(private var stationList : ArrayList<NearbyStationItem
         holder.stationContainer.setOnClickListener {
             clickListener.onStationClick(stationItem)
         }
-
-//        holder.taskContainer.setOnLongClickListener {
-//            taskEvent.onTaskLongClick(taskItem)
-//            true
-//        }
     }
 
     override fun getItemCount(): Int
