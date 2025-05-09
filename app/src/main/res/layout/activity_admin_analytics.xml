@@ -2,9 +2,87 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AdminAnalytics">
+    tools:context=".AdminAnalytics"
+    android:id="@+id/admin_analytics">
+
+    <!-- android:background="#C4D9F2"-->
+    <TextView
+        android:id="@+id/back_butt_admin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#E8CCE8"
+        android:paddingLeft="10dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="5dp"
+        android:text="  Go Back"
+        android:drawableLeft="?attr/homeAsUpIndicator"
+        android:textColor="@color/black"
+        android:textSize="22sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!--    android:drawableLeft="@android:drawable/ic...revert"-->
+
+
+
+    <!-- List out stations for User -->
+
+    <TextView
+        android:id="@+id/admin_station_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Station_Name"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/back_butt_admin" />
+
+    <TextView
+        android:id="@+id/today_output"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="Today's Output: "
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/admin_station_name" />
+
+    <TextView
+        android:id="@+id/monthly_output"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="Monthly Output: "
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="@+id/today_output"
+        app:layout_constraintStart_toStartOf="@+id/today_output"
+        app:layout_constraintTop_toBottomOf="@+id/today_output" />
+
+    <TextView
+        android:id="@+id/peak_usage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="Peak Usage"
+        app:layout_constraintEnd_toEndOf="@+id/monthly_output"
+        app:layout_constraintStart_toStartOf="@+id/monthly_output"
+        app:layout_constraintTop_toBottomOf="@+id/monthly_output" />
+
+    <TextView
+        android:id="@+id/active_ports"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="Active Ports: "
+        app:layout_constraintEnd_toEndOf="@+id/peak_usage"
+        app:layout_constraintStart_toStartOf="@+id/peak_usage"
+        app:layout_constraintTop_toBottomOf="@+id/peak_usage" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

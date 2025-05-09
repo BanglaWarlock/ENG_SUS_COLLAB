@@ -13,7 +13,7 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
-class MainActivity : AppCompatActivity(), NearbyStationClickListener, NearbyStationClickListenerAdmin, onAdminClicks
+class MainActivity : AppCompatActivity(), NearbyStationClickListener, NearbyStationClickListenerAdmin, onAdminClicks, infoCardClickListener
 {
     private var activeFragment: Fragment? = null
     private var is_admin = false
@@ -113,20 +113,28 @@ class MainActivity : AppCompatActivity(), NearbyStationClickListener, NearbyStat
             return
         }
 
+/*        if (fragment is MapView) {
+            mapFragment = MapView.newInstance("","")
+            // replace fragment otherwise
+            activeFragment?.let {
+                supportFragmentManager.beginTransaction()
+                    .replace(R.id.fragmentContainerView2, mapFragment)
+                    .commit()
+            }
+            activeFragment = mapFragment
+            return
+        }*/
+
 
         // Don't do anything if the fragment is already showing
         if (fragment === activeFragment) return
 
-
-
-
-
-            // replace fragment otherwise
-            activeFragment?.let {
-                supportFragmentManager.beginTransaction()
-                    .replace(R.id.fragmentContainerView2, fragment)
-                    .commit()
-            }
+        // replace fragment otherwise
+        activeFragment?.let {
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.fragmentContainerView2, fragment)
+                .commit()
+        }
 
 
         // Update the active fragment reference
@@ -190,17 +198,28 @@ class MainActivity : AppCompatActivity(), NearbyStationClickListener, NearbyStat
 
     override fun onStationClickAdmin(stationItem: NearbyStationItem)
     {
-//        // Create an Intent to start StationDetailActivity
-//        val intent = Intent(this, AdminAnalytics::class.java)
-//
-//        intent.putExtra("station_name", stationItem.station_name)
-//        intent.putExtra("station_distance", stationItem.station_distance)
-//
-//        for (i in 0..63) {
-//            intent.putExtra("battery_percent$i", stationItem.battery_percents[i])
-//        }
-//
-//        // Start the new Activity
-//        startActivity(intent)
+        // Create an Intent to start StationDetailActivity
+        val intent = Intent(this, AdminAnalytics::class.java)
+
+        intent.putExtra("station_name", stationItem.station_name)
+
+        // Start the new Activity
+        startActivity(intent)
+    }
+
+    override fun onInfoCardClick(stationItem: NearbyStationItem)
+    {
+        // Create an Intent to start StationDetailActivity
+        val intent = Intent(this, FullDetail::class.java)
+
+        intent.putExtra("station_name", stationItem.station_name)
+        intent.putExtra("station_distance", stationItem.station_distance)
+
+        for (i in 0..63) {
+            intent.putExtra("battery_percent$i", stationItem.battery_percents[i])
+        }
+
+        // Start the new Activity
+        startActivity(intent)
     }
 }
