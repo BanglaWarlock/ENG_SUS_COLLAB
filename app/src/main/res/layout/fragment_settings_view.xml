@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#C4D9F2"
+    android:background="@color/white"
     tools:context=".SettingsView">
 
     <TextView
         android:id="@+id/textSettings"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#E8CCE8"
+        android:background="#00BCD4"
         android:paddingLeft="10dp"
         android:paddingTop="10dp"
         android:paddingBottom="5dp"

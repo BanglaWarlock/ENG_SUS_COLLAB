@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@color/white"
     >
 
 <!--  android:background="#D9E9FE"  UI for a station in a list-->
@@ -28,7 +29,7 @@
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:layout_margin="20dp"
-        android:backgroundTint="#D9E9FE"
+
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -38,13 +39,16 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:background="@drawable/roundshape"
+            >
 
             <ImageView
                 android:id="@+id/icon_Complete"
-                android:layout_width="54dp"
-                android:layout_height="52dp"
+                android:layout_width="74dp"
+                android:layout_height="72dp"
                 android:layout_marginStart="20dp"
+                android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -57,6 +61,7 @@
                 android:text="Batu Lintang Station"
                 android:textColor="@color/black"
                 android:textStyle="bold"
+                android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="@+id/icon_Complete"
                 app:layout_constraintEnd_toStartOf="@+id/text_Date"
                 app:layout_constraintStart_toEndOf="@+id/icon_Complete"
@@ -69,6 +74,7 @@
                 android:layout_marginEnd="20dp"
                 android:text="2 km"
                 android:textColor="@color/black"
+                android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="@+id/text_StName2"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/text_StName2" />

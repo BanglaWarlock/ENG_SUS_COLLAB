@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="#ECEFF1"
     >
 
     <!--  android:background="#D9E9FE"  UI for a station in a list-->
@@ -51,7 +52,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textAlignment="center"
-                    android:text="Battery Left: " />
+                    android:text="🔋 Battery Left: " />
 
                 <LinearLayout
                     android:layout_width="match_parent"

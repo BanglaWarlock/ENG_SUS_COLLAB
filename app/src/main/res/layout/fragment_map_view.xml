@@ -12,7 +12,7 @@
         android:id="@+id/textMap"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#E8CCE8"
+        android:background="#00BCD4"
         android:paddingLeft="10dp"
         android:paddingTop="10dp"
         android:paddingBottom="5dp"
@@ -55,12 +55,13 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:background="@drawable/rectshape">
 
             <ImageView
                 android:id="@+id/icon_Complete"
-                android:layout_width="54dp"
-                android:layout_height="52dp"
+                android:layout_width="74dp"
+                android:layout_height="72dp"
                 android:layout_marginStart="20dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -74,6 +75,7 @@
                 android:text="Batu Lintang Station"
                 android:textColor="@color/black"
                 android:textStyle="bold"
+                android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="@+id/icon_Complete"
                 app:layout_constraintEnd_toStartOf="@+id/map_date"
                 app:layout_constraintStart_toEndOf="@+id/icon_Complete"
@@ -86,6 +88,7 @@
                 android:layout_marginEnd="20dp"
                 android:text="2 km"
                 android:textColor="@color/black"
+                android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="@+id/map_st_name"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/map_st_name" />
