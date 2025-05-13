@@ -1,10 +1,10 @@
 package com.example.eng_sus_collab
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
@@ -45,27 +45,27 @@ class AdminView : Fragment() {
     {
         var stations = ArrayList<NearbyStationItem>()
 
-        stations.add(NearbyStationItem("Station 1", 2.0))
-        stations.add(NearbyStationItem("Maple Junction", 1.85))
-        stations.add(NearbyStationItem("Oakwood Station", 0.57))
-        stations.add(NearbyStationItem("Pine Ridge", 3.21))
-        stations.add(NearbyStationItem("Cedar Point", 2.44))
-        stations.add(NearbyStationItem("Birch Hill", 0.92))
-        stations.add(NearbyStationItem("Elm Street", 4.76))
-        stations.add(NearbyStationItem("Spruce Valley", 1.39))
-        stations.add(NearbyStationItem("Willow Creek", 2.88))
-        stations.add(NearbyStationItem("Ash Grove", 0.63))
-        stations.add(NearbyStationItem("Redwood Central", 3.07))
-        stations.add(NearbyStationItem("Magnolia Heights", 1.02))
-        stations.add(NearbyStationItem("Chestnut Bay", 2.12))
-        stations.add(NearbyStationItem("Hawthorn Loop", 0.45))
-        stations.add(NearbyStationItem("Juniper Park", 3.90))
-        stations.add(NearbyStationItem("Linden Terrace", 4.04))
-        stations.add(NearbyStationItem("Sequoia Fields", 2.77))
-        stations.add(NearbyStationItem("Dogwood Flats", 0.33))
-        stations.add(NearbyStationItem("Fir Glen", 1.96))
-        stations.add(NearbyStationItem("Poplar Springs", 4.59))
-        stations.add(NearbyStationItem("Sycamore Station", 2.23))
+        stations.add(NearbyStationItem("Rembus", 2.0))
+        stations.add(NearbyStationItem("Universiti Station", 1.85))
+        stations.add(NearbyStationItem("Melaban", 0.57))
+        stations.add(NearbyStationItem("Sigitin", 3.21))
+        stations.add(NearbyStationItem("Unimas", 2.44))
+        stations.add(NearbyStationItem("Heart Centre", 0.92))
+        stations.add(NearbyStationItem("Riveria", 4.76))
+        stations.add(NearbyStationItem("Stutong", 1.39))
+        stations.add(NearbyStationItem("Wan Alwi", 2.88))
+        stations.add(NearbyStationItem("Viva City Mall", 0.63))
+        stations.add(NearbyStationItem("Simpang Tiga", 3.07))
+        stations.add(NearbyStationItem("The Spring", 1.02))
+        stations.add(NearbyStationItem("Batu Lintang", 2.12))
+        stations.add(NearbyStationItem("Sarawak General Hospital", 0.45))
+        stations.add(NearbyStationItem("Hikmah Exchange", 3.90))
+        stations.add(NearbyStationItem("Aeon Mall", 4.04))
+        stations.add(NearbyStationItem("Kuching Sentral", 2.77))
+        stations.add(NearbyStationItem("Kuching International Airport", 0.33))
+        stations.add(NearbyStationItem("Pelita Height", 1.96))
+        stations.add(NearbyStationItem("Tun Jugah", 4.59))
+        stations.add(NearbyStationItem("Jalan Tun Razak", 2.23))
 
         stations.sortBy { it.station_distance }
 
