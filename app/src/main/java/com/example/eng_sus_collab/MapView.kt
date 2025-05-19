@@ -160,12 +160,12 @@ class MapView : Fragment(), OnMapReadyCallback,  GoogleMap.OnMarkerClickListener
                             // Add your marker or perform other operations with the location
 
                             // Add your marker here
-                            val markerOptions = MarkerOptions()
-                                .position(LatLng(latitude.toDouble(), longitude.toDouble()))
-                                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_MAGENTA))
-                            val marker = googleMap.addMarker(markerOptions)
-
-                            markerStationMap[marker!!] = stations[0]
+//                            val markerOptions = MarkerOptions()
+//                                .position(LatLng(latitude.toDouble(), longitude.toDouble()))
+//                                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_MAGENTA))
+//                            val marker = googleMap.addMarker(markerOptions)
+//
+//                            markerStationMap[marker!!] = stations[0]
 
 
                             googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(LatLng(latitude.toDouble(), longitude.toDouble()), zoom_scale))
@@ -173,9 +173,6 @@ class MapView : Fragment(), OnMapReadyCallback,  GoogleMap.OnMarkerClickListener
                             setupMarkers()
 
                         }
-
-
-
 
                     } else {
                         // Handle the case where the location is null
@@ -190,12 +187,27 @@ class MapView : Fragment(), OnMapReadyCallback,  GoogleMap.OnMarkerClickListener
         }
     }
 
+
+
+
     private fun setupMarkers()
     {
 
         // clear all markers
         googleMap.clear()
         markerStationMap.clear()
+
+        // Re-add current location marker (station[0]) if needed
+        val currentLatLng = LatLng(latitude.toDouble(), longitude.toDouble())
+        val currentMarker = googleMap.addMarker(
+            MarkerOptions()
+                .position(currentLatLng)
+                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_MAGENTA))
+        )
+        if (currentMarker != null) {
+            markerStationMap[currentMarker] = stations[0]
+        }
+
         // for every item in the station list
 
         for (i in 1..<stations.size) {
