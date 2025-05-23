@@ -73,6 +73,16 @@
         app:layout_constraintTop_toBottomOf="@+id/textView"
         app:layout_constraintVertical_weight="1" />
 
+<!--    Idk if you needed this but I added it anyways-->
+    <Spinner
+        android:id="@+id/spinner2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rectshape"
+        android:spinnerMode="dropdown"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
     <TextView
         android:id="@+id/textView"
         android:layout_width="match_parent"

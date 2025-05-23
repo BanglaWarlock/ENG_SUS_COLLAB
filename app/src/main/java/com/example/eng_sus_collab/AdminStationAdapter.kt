@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.eng_sus_collab.NearbyStationAdapter.ViewHolder
 
 class AdminStationAdapter(private var stationList : ArrayList<NearbyStationItem>, private var clickListener: AdminView) :
     RecyclerView.Adapter<AdminStationAdapter.ViewHolder>()
@@ -27,7 +26,7 @@ class AdminStationAdapter(private var stationList : ArrayList<NearbyStationItem>
     ): AdminStationAdapter.ViewHolder
     {
         context = parent.context
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.station_user, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.station_admin, parent, false)
         return ViewHolder(view)
     }
 
