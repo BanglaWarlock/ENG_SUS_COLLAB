@@ -7,24 +7,33 @@
         tools:context=".NearMe">
 
  <!-- android:background="#C4D9F2"-->
-        <TextView
-            android:id="@+id/textNear"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#00BCD4"
-            android:paddingLeft="10dp"
-            android:paddingTop="10dp"
-            android:paddingBottom="5dp"
-            android:text="Near Me"
-            android:textColor="@color/black"
-            android:textSize="22sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
 
+    <!-- List out stations for User -->
+    <TextView
+        android:id="@+id/textNear"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#00BCD4"
+        android:paddingLeft="10dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="5dp"
+        android:text="Near Me"
+        android:textColor="@color/black"
+        android:textSize="22sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <!-- List out stations for User -->
+    <Spinner
+        android:id="@+id/spinner1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:drawable/btn_dropdown"
+        android:spinnerMode="dropdown"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textNear" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerUser"
         android:layout_width="match_parent"
@@ -34,6 +43,6 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintHorizontal_weight="1"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textNear" />
+        app:layout_constraintTop_toBottomOf="@+id/spinner1" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
