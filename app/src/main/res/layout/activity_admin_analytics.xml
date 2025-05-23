@@ -85,27 +85,29 @@
         app:layout_constraintStart_toStartOf="@+id/peak_usage"
         app:layout_constraintTop_toBottomOf="@+id/peak_usage" />
 
-    <Button
-        android:id="@+id/editbtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="40dp"
-        android:text="Edit Station"
-        app:layout_constraintBottom_toBottomOf="@+id/delbtn"
-        app:layout_constraintEnd_toStartOf="@+id/delbtn"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/delbtn" />
+        <Button
+            android:id="@+id/editbtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="40dp"
+            android:text="Edit Station"
+            android:background="@drawable/custombtn"
+            app:layout_constraintBottom_toBottomOf="@+id/delbtn"
+            app:layout_constraintEnd_toStartOf="@+id/delbtn"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/delbtn" />
 
-    <Button
-        android:id="@+id/delbtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="72dp"
-        android:layout_marginEnd="56dp"
-        android:text="Delete Station"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/active_ports" />
+        <Button
+            android:id="@+id/delbtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/custombtn"
+            android:layout_marginTop="72dp"
+            android:layout_marginEnd="56dp"
+            android:text="Delete Station"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/active_ports" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
