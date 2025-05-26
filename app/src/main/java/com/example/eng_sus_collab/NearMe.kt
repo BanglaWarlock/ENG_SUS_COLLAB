@@ -4,6 +4,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
+import android.widget.Spinner
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -28,6 +31,7 @@ class NearMe : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
     private var stationList = ArrayList<NearbyStationItem>()
+    private var shown_StationList = ArrayList<NearbyStationItem>()
     private  lateinit var  stationListAdapter: NearbyStationAdapter
     private lateinit var listener: NearbyStationClickListener
 
@@ -43,34 +47,32 @@ class NearMe : Fragment() {
 
     private fun setupStationLists()
     {
-        var stations = ArrayList<NearbyStationItem>()
 
-        stations.add(NearbyStationItem("Rembus", 2.0))
-        stations.add(NearbyStationItem("Universiti Station", 1.85))
-        stations.add(NearbyStationItem("Melaban", 0.57))
-        stations.add(NearbyStationItem("Sigitin", 3.21))
-        stations.add(NearbyStationItem("Unimas", 2.44))
-        stations.add(NearbyStationItem("Heart Centre", 0.92))
-        stations.add(NearbyStationItem("Riveria", 4.76))
-        stations.add(NearbyStationItem("Stutong", 1.39))
-        stations.add(NearbyStationItem("Wan Alwi", 2.88))
-        stations.add(NearbyStationItem("Viva City Mall", 0.63))
-        stations.add(NearbyStationItem("Simpang Tiga", 3.07))
-        stations.add(NearbyStationItem("The Spring", 1.02))
-        stations.add(NearbyStationItem("Batu Lintang", 2.12))
-        stations.add(NearbyStationItem("Sarawak Hospital", 0.45))
-        stations.add(NearbyStationItem("Hikmah Exchange", 3.90))
-        stations.add(NearbyStationItem("Aeon Mall", 4.04))
-        stations.add(NearbyStationItem("Kuching Sentral", 2.77))
-        stations.add(NearbyStationItem("Kuching Airport", 0.33))
-        stations.add(NearbyStationItem("Pelita Height", 1.96))
-        stations.add(NearbyStationItem("Tun Jugah", 4.59))
-        stations.add(NearbyStationItem("Jalan Tun Razak", 2.23))
+        stationList.add(NearbyStationItem("Rembus", 2.0))
+        stationList.add(NearbyStationItem("Universiti Station", 1.85))
+        stationList.add(NearbyStationItem("Melaban", 0.57))
+        stationList.add(NearbyStationItem("Sigitin", 3.21))
+        stationList.add(NearbyStationItem("Unimas", 2.44))
+        stationList.add(NearbyStationItem("Heart Centre", 0.92))
+        stationList.add(NearbyStationItem("Riveria", 4.76))
+        stationList.add(NearbyStationItem("Stutong", 1.39))
+        stationList.add(NearbyStationItem("Wan Alwi", 2.88))
+        stationList.add(NearbyStationItem("Viva City Mall", 0.63))
+        stationList.add(NearbyStationItem("Simpang Tiga", 3.07))
+        stationList.add(NearbyStationItem("The Spring", 1.02))
+        stationList.add(NearbyStationItem("Batu Lintang", 2.12))
+        stationList.add(NearbyStationItem("Sarawak Hospital", 0.45))
+        stationList.add(NearbyStationItem("Hikmah Exchange", 3.90))
+        stationList.add(NearbyStationItem("Aeon Mall", 4.04))
+        stationList.add(NearbyStationItem("Kuching Sentral", 2.77))
+        stationList.add(NearbyStationItem("Kuching Airport", 0.33))
+        stationList.add(NearbyStationItem("Pelita Height", 1.96))
+        stationList.add(NearbyStationItem("Tun Jugah", 4.59))
+        stationList.add(NearbyStationItem("Jalan Tun Razak", 2.23))
 
-        stations.sortBy { it.station_distance }
+        stationList.sortBy { it.station_distance }
 
-        stationListAdapter.setLists(stations)
-        stationListAdapter.notifyDataSetChanged()
+
     }
 
     override fun onCreateView(
@@ -91,7 +93,66 @@ class NearMe : Fragment() {
         listener = context as NearbyStationClickListener
 
         setupStationLists()
+        setupSpinner(view)
         return view
+    }
+
+    private fun setupSpinner(this_view : View)
+    {
+        var spinner_instance = this_view.findViewById<Spinner>(R.id.near_me_spinner)
+        var distanceList = mutableListOf<String>()
+
+        distanceList.add("All")
+        distanceList.add("2 km")
+        distanceList.add("4 km")
+
+        var arrayAdapter = ArrayAdapter(requireContext(), androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, distanceList)
+        arrayAdapter.setDropDownViewResource(com.google.android.material.R.layout.support_simple_spinner_dropdown_item)
+        spinner_instance.adapter = arrayAdapter
+
+        // what to do when a distance is selected
+
+        // spinner will do things when something is selected
+        spinner_instance.onItemSelectedListener = object : AdapterView.OnItemSelectedListener
+        {
+            override fun onItemSelected(adapterView: AdapterView<*>?, view: View?, i: Int, l: Long)
+            {
+                when (this_view.findViewById<Spinner>(R.id.near_me_spinner).selectedItem)
+                {
+                    "All" ->
+                    {
+                        shown_StationList = stationList
+                        stationListAdapter.setLists(shown_StationList)
+                        stationListAdapter.notifyDataSetChanged()
+
+                    }
+
+                    "2 km" ->
+                    {
+                        shown_StationList =
+                            stationList.filter { it.station_distance <= 2.0 } as ArrayList<NearbyStationItem>
+
+                        stationListAdapter.setLists(shown_StationList)
+                        stationListAdapter.notifyDataSetChanged()
+                    }
+
+                    "4 km" ->
+                    {
+                        shown_StationList =
+                            stationList.filter { it.station_distance <= 4.0 } as ArrayList<NearbyStationItem>
+
+
+                        stationListAdapter.setLists(shown_StationList)
+                        stationListAdapter.notifyDataSetChanged()
+                    }
+                }
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>?)
+            {
+                // do nothing
+            }
+        }
     }
 
     // This method will be called by your adapter when a station is clicked
@@ -99,7 +160,8 @@ class NearMe : Fragment() {
         listener.onStationClick(stationItem)
     }
 
-    companion object {
+    companion object
+    {
         /**
          * Use this factory method to create a new instance of
          * this fragment using the provided parameters.
@@ -117,6 +179,7 @@ class NearMe : Fragment() {
                     putString(ARG_PARAM2, param2)
                 }
             }
+
     }
 
 }
