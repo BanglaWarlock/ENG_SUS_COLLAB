@@ -1,9 +1,13 @@
 package com.example.eng_sus_collab
 
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -43,33 +47,37 @@ class AdminView : Fragment() {
 
     private fun setupStationLists()
     {
-        var stations = ArrayList<NearbyStationItem>()
+        if (stationList.size > 0)
+        {
+            stationListAdapter.notifyDataSetChanged()
+            return
+        }
 
-        stations.add(NearbyStationItem("Rembus", 2.0))
-        stations.add(NearbyStationItem("Universiti Station", 1.85))
-        stations.add(NearbyStationItem("Melaban", 0.57))
-        stations.add(NearbyStationItem("Sigitin", 3.21))
-        stations.add(NearbyStationItem("Unimas", 2.44))
-        stations.add(NearbyStationItem("Heart Centre", 0.92))
-        stations.add(NearbyStationItem("Riveria", 4.76))
-        stations.add(NearbyStationItem("Stutong", 1.39))
-        stations.add(NearbyStationItem("Wan Alwi", 2.88))
-        stations.add(NearbyStationItem("Viva City Mall", 0.63))
-        stations.add(NearbyStationItem("Simpang Tiga", 3.07))
-        stations.add(NearbyStationItem("The Spring", 1.02))
-        stations.add(NearbyStationItem("Batu Lintang", 2.12))
-        stations.add(NearbyStationItem("Sarawak Hospital", 0.45))
-        stations.add(NearbyStationItem("Hikmah Exchange", 3.90))
-        stations.add(NearbyStationItem("Aeon Mall", 4.04))
-        stations.add(NearbyStationItem("Kuching Sentral", 2.77))
-        stations.add(NearbyStationItem("Kuching Airport", 0.33))
-        stations.add(NearbyStationItem("Pelita Height", 1.96))
-        stations.add(NearbyStationItem("Tun Jugah", 4.59))
-        stations.add(NearbyStationItem("Jalan Tun Razak", 2.23))
+        stationList.add(NearbyStationItem("Rembus", 2.0))
+        stationList.add(NearbyStationItem("Universiti Station", 1.85))
+        stationList.add(NearbyStationItem("Melaban", 0.57))
+        stationList.add(NearbyStationItem("Sigitin", 3.21))
+        stationList.add(NearbyStationItem("Unimas", 2.44))
+        stationList.add(NearbyStationItem("Heart Centre", 0.92))
+        stationList.add(NearbyStationItem("Riveria", 4.76))
+        stationList.add(NearbyStationItem("Stutong", 1.39))
+        stationList.add(NearbyStationItem("Wan Alwi", 2.88))
+        stationList.add(NearbyStationItem("Viva City Mall", 0.63))
+        stationList.add(NearbyStationItem("Simpang Tiga", 3.07))
+        stationList.add(NearbyStationItem("The Spring", 1.02))
+        stationList.add(NearbyStationItem("Batu Lintang", 2.12))
+        stationList.add(NearbyStationItem("Sarawak Hospital", 0.45))
+        stationList.add(NearbyStationItem("Hikmah Exchange", 3.90))
+        stationList.add(NearbyStationItem("Aeon Mall", 4.04))
+        stationList.add(NearbyStationItem("Kuching Sentral", 2.77))
+        stationList.add(NearbyStationItem("Kuching Airport", 0.33))
+        stationList.add(NearbyStationItem("Pelita Height", 1.96))
+        stationList.add(NearbyStationItem("Tun Jugah", 4.59))
+        stationList.add(NearbyStationItem("Jalan Tun Razak", 2.23))
 
-        stations.sortBy { it.station_distance }
+        stationList.sortBy { it.station_distance }
 
-        stationListAdapter.setLists(stations)
+        stationListAdapter.setLists(stationList)
         stationListAdapter.notifyDataSetChanged()
     }
 
@@ -97,11 +105,55 @@ class AdminView : Fragment() {
 
     fun onStationClick(stationItem: NearbyStationItem)
     {
-        listener.onStationClickAdmin(stationItem)
+//        listener.onStationClickAdmin(stationItem)
+        val intent = Intent(requireActivity(), AdminAnalytics::class.java)
+        // Optionally, pass some initial data to AdminAnalytics if needed
+        intent.putExtra("station_name", stationItem.station_name)
+        startActivityForResult(intent, ADMIN_ANALYTICS_REQUEST_CODE)
+    }
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data) // Important to call super
+
+        if (requestCode == ADMIN_ANALYTICS_REQUEST_CODE) {
+            if (resultCode == Activity.RESULT_OK && data != null) {
+                when (data.getStringExtra(ACTION_TYPE_KEY)) {
+                    ACTION_DELETE -> {
+                        val deleted_station_name = data.getStringExtra(DELETED_STATION_NAME_KEY)
+                        stationList.removeIf { it.station_name == deleted_station_name }
+
+                        stationListAdapter.notifyDataSetChanged()
+                    }
+                    ACTION_EDIT -> {
+                        val editedStationName = data.getStringExtra(EDITED_STATION)
+                        val stationToEdit = stationList.find { it.station_name == editedStationName }
+                        if (stationToEdit != null) {
+                            stationToEdit.station_name = data.getStringExtra(EDITED_STATION_NAME)!!
+                            stationListAdapter.notifyDataSetChanged()
+                        }
+                    }
+                    else -> {
+                        Log.d("YourFragment", "AdminAnalytics returned with unknown action or general data.")
+                        // Handle other general data if necessary
+                    }
+                }
+            } else if (resultCode == Activity.RESULT_CANCELED) {
+                Log.d("YourFragment", "AdminAnalytics was cancelled or returned no specific data.")
+                // Handle cancellation if needed
+            }
+        }
     }
 
     companion object {
+
+        const val ADMIN_ANALYTICS_REQUEST_CODE = 201 // Unique request code for this fragment
+        // Define keys for data you expect back, consistent with AdminAnalytics
+        const val ACTION_TYPE_KEY = "action_type"
+        const val ACTION_DELETE = "action_delete"
+        const val ACTION_EDIT = "action_edit"
+        const val EDITED_STATION_NAME = "edited_station_name" // Ex
+        const val EDITED_STATION = "edited_station" // Ex
+        const val DELETED_STATION_NAME_KEY = "deleted_station_name" // Ex
         /**
          * Use this factory method to create a new instance of
          * this fragment using the provided parameters.

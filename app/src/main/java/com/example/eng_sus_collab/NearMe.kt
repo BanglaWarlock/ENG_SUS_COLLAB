@@ -1,15 +1,21 @@
 package com.example.eng_sus_collab
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
+import androidx.activity.result.launch
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 
 // TODO: Rename parameter arguments, choose names that match
@@ -47,6 +53,12 @@ class NearMe : Fragment() {
 
     private fun setupStationLists()
     {
+        if (stationList.size > 0)
+        {
+            stationListAdapter.notifyDataSetChanged()
+            return
+        }
+
 
         stationList.add(NearbyStationItem("Rembus", 2.0))
         stationList.add(NearbyStationItem("Universiti Station", 1.85))
@@ -94,6 +106,24 @@ class NearMe : Fragment() {
 
         setupStationLists()
         setupSpinner(view)
+        GlobalScope.launch{
+
+        }
+
+        viewLifecycleOwner.lifecycleScope.launch {
+            // neds to be in on create view
+            // This code runs in a coroutine
+            Log.d("MyFragmentCoroutine", "Coroutine started")
+
+            var count = 1
+
+            while (true){
+                delay(1000)
+                Log.d("MyFragmentCoroutine", "Coroutine running: $count")
+                count++
+            }
+
+        }
         return view
     }
 

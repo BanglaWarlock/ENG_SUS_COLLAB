@@ -56,4 +56,11 @@ dependencies {
     implementation("com.google.maps.android:android-maps-utils:2.3.0")
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+
+    // For viewLifecycleOwner.lifecycleScope
+    implementation ("androidx.lifecycle:lifecycle-runtime-ktx:2.8.3") // Or the latest version
+
+    // For ViewModelScope (if you're using ViewModels, which is a good practice)
+    implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.3") // Or the latest version
+
 }
