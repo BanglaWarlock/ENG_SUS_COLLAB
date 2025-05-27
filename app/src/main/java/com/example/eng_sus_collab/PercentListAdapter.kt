@@ -2,12 +2,15 @@ package com.example.eng_sus_collab
 
 import android.content.Context
 import android.graphics.Color
+import android.graphics.drawable.GradientDrawable
 import android.view.LayoutInflater
 import android.view.View
+import android.view.Gravity
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
+import androidx.core.view.marginEnd
 import androidx.recyclerview.widget.RecyclerView
 
 class PercentListAdapter (private var percentList: ArrayList<ArrayList<Int>>) :
@@ -55,17 +58,36 @@ class PercentListAdapter (private var percentList: ArrayList<ArrayList<Int>>) :
             var curr_percent = percents[i]
             var textView = holder.itemView.findViewById<TextView>(slot_id[i])
 
-            if (curr_percent <= 40) {
+            val circleDrawable = ContextCompat.getDrawable(context, R.drawable.circleshape)?.mutate() as? GradientDrawable
+
+
+            val strokecolor = when {
+                curr_percent <= 40 -> Color.RED
+                curr_percent <= 90 -> Color.YELLOW
+                else -> {
+                    battery_left += 1
+                    Color.GREEN
+                }
+            }
+
+            circleDrawable?.setStroke(8, strokecolor) // Set the fill color of the shape
+
+            textView.background = circleDrawable // Apply the modified
+
+/*            if (curr_percent <= 40) {
                 textView.setBackgroundColor(Color.RED)
             } else if (curr_percent <= 90) {
                 textView.setBackgroundColor(Color.YELLOW)
             }else {
                 textView.setBackgroundColor(Color.GREEN)
                 battery_left += 1
-            }
+            }*/
 
+//            circleDrawable.
+            textView.textSize = 18f
             textView.text = curr_percent.toString() + "%"
-
+//            textView.gravity = Gravity.CENTER
+            textView.background = circleDrawable
         }
 
         holder.itemView.findViewById<TextView>(R.id.battery_left).text = "Battery Left: " + battery_left.toString() + "/18"
