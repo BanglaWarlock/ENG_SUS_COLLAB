@@ -37,6 +37,7 @@
 
 
 
+<!--
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/showARTRoutes"
         android:layout_width="wrap_content"
@@ -48,8 +49,9 @@
         app:backgroundTint="#E0F7FA"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textMap" />
+-->
 
-    <androidx.appcompat.widget.AppCompatButton
+<!--    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/addbtn"
         android:layout_width="148dp"
         android:layout_height="60dp"
@@ -61,7 +63,7 @@
         app:layout_constraintEnd_toStartOf="@+id/showARTRoutes"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textMap" />
+        app:layout_constraintTop_toBottomOf="@+id/textMap" />-->
 
     <com.google.android.gms.maps.MapView
         android:id="@+id/mapView"
@@ -96,6 +98,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
+
                 app:srcCompat="@drawable/station" />
 
             <TextView
